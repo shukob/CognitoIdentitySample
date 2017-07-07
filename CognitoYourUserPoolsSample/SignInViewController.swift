@@ -20,17 +20,22 @@ import AWSCognitoIdentityProvider
 import FBSDKLoginKit
 import TwitterKit
 
+enum LoginType{
+    case Facebook, Twitter, UserPool
+}
+
 class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
+    
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
     @IBOutlet weak var twLoginButton: TWTRLogInButton!
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>?
-
+    
     var usernameText: String?
     
     func backgroundDidTap(sender: UITapGestureRecognizer){
-       username.resignFirstResponder()
+        username.resignFirstResponder()
         password.resignFirstResponder()
     }
     override func viewDidLoad() {
@@ -45,14 +50,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         twLoginButton.logInCompletion = { [weak self](session, error) in
             if let _ = session{
                 let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: CognitoFederatedIdentityPoolId, identityProviderManager: TwitterProvider())
-                credentialsProvider.identityProvider.logins().continueWith(block: { [weak self](task) -> Any? in
-                    print(task.result ?? "")
-                    return credentialsProvider.identityProvider.getIdentityId().continueWith(block: { (task) -> Any? in
-                        print(task.result ?? "")
-                        self?.dismiss(animated: true, completion: nil)
-                        return nil
-                    })
-                })
+                self?.login(with: credentialsProvider,  loginType: .Twitter)
             }
         }
     }
@@ -76,31 +74,102 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             alertController.addAction(retryAction)
         }
     }
-    
+   
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if result.isCancelled{
             
         }else{
             let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: CognitoFederatedIdentityPoolId, identityProviderManager: FacebookProvider())
-            credentialsProvider.identityProvider.logins().continueWith(block: { [weak self](task) -> Any? in
-                print(task.result ?? "")
-                return credentialsProvider.getIdentityId().continueWith(block: { (task) -> Any? in
-                    print(task.result ?? "")
-                    self?.dismiss(animated: true, completion: nil)
-                    return nil
-                })
-            })
+            login(with: credentialsProvider,  loginType: .Facebook)
+            
         }
     }
     
+    func login(with credentialsProvider: AWSCognitoCredentialsProvider, loginType: LoginType){
+        credentialsProvider.identityProvider.logins().continueWith(block: { [weak self](task) -> Any? in
+            return credentialsProvider.getIdentityId().continueWith(block: { (task) -> Any? in
+                if let error = task.error{
+                    print(error)
+                    return nil
+                }else{
+                    if let identityId = task.result{
+                        let config = AWSServiceConfiguration(region: .APNortheast1, credentialsProvider: credentialsProvider)
+                        AWSServiceManager.default().defaultServiceConfiguration = config
+                        return TCTectecClient.default().userDetailGet(identityId: String(identityId)).continueWith(block: {[weak self] (task: AWSTask<TCUserDetail>) -> Any? in
+                            if task.result == nil{
+                                self?.registerUser(with: credentialsProvider, identityId: identityId as String, loginType: loginType)
+                            }else{
+                                self?.dismiss(animated: true, completion: nil)
+                            }
+                            return nil
+                        })
+                    }else{
+                        return nil
+                    }
+                }
+            })
+        })
+    }
+    
+    func registerUser(with credentialsProvider: AWSCognitoCredentialsProvider, identityId: String,  loginType: LoginType){
+        switch(loginType){
+        case .Facebook:
+            let req = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"], tokenString: FBSDKAccessToken.current().tokenString, version: nil, httpMethod: "GET")
+            let _ = req?.start(completionHandler: { [weak self](_, result, _) in
+                if let result = result as? [String: Any]{
+                    let email = result["email"] as? String
+                    let nickName = result["name"] as? String
+                    self?.registerUser(withNickName: nickName!, email: email!, identityId: identityId)
+               }
+            })
+        case .Twitter:
+            TWTRAPIClient.withCurrentUser().requestEmail(forCurrentUser: { (email, error) in
+                if let email = email{
+                    TWTRAPIClient.withCurrentUser().loadUser(withID: Twitter.sharedInstance().sessionStore.session()!.userID, completion: {[weak self] (user, error) in
+                        if let user = user{
+                            let nickName = user.screenName
+                            self?.registerUser(withNickName: nickName, email: email, identityId: identityId)
+                        }
+                    })
+                }
+            })
+            break
+        case .UserPool:
+            let pool = AWSCognitoIdentityUserPool(forKey: AWSCognitoUserPoolsSignInProviderKey)
+            let user = pool.currentUser()
+            user?.getDetails().continueOnSuccessWith { [weak self] (task) -> AnyObject? in
+                let nickName = user?.username
+                let email = self?.username?.text
+                self?.registerUser(withNickName: nickName!, email: email!, identityId: identityId)
+                return nil
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    func registerUser(withNickName nickName: String, email: String, identityId: String){
+        let newUser = try! TCNewUser(dictionary: ["identityId": identityId, "nickName": nickName, "email": email], error: ())
+        TCTectecClient.default().userPost(body: newUser).continueWith(block: {[weak self] (result) -> Any? in
+            if let _ = result.result{
+                self?.dismiss(animated: true, completion: nil)
+            }else{
+                //TODO handle registration error
+            }
+            
+            return nil
+        })
+    }
+
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
     }
-    
-    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
-       return true
-    }
 
+    func loginButtonWillLogin(_ loginButton: FBSDKLoginButton!) -> Bool {
+        return true
+    }
+    
 }
 
 extension SignInViewController: AWSCognitoIdentityPasswordAuthentication {
@@ -115,7 +184,7 @@ extension SignInViewController: AWSCognitoIdentityPasswordAuthentication {
     }
     
     public func didCompleteStepWithError(_ error: Error?) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             if let error = error as? NSError {
                 let alertController = UIAlertController(title: error.userInfo["__type"] as? String,
                                                         message: error.userInfo["message"] as? String,
@@ -123,19 +192,11 @@ extension SignInViewController: AWSCognitoIdentityPasswordAuthentication {
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: nil)
                 alertController.addAction(retryAction)
                 
-                self.present(alertController, animated: true, completion:  nil)
+                self?.present(alertController, animated: true, completion:  nil)
             } else {
-                self.username.text = nil
                 let pool = AWSCognitoIdentityUserPool(forKey: AWSCognitoUserPoolsSignInProviderKey)
                 let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .APNortheast1, identityPoolId: CognitoFederatedIdentityPoolId, identityProviderManager: pool)
-                credentialsProvider.identityProvider.logins().continueWith(block: { [weak self](task) -> Any? in
-                    print(task.result ?? "")
-                   return credentialsProvider.getIdentityId().continueWith(block: { (task) -> Any? in
-                    print(task.result ?? "")
-                    self?.dismiss(animated: true, completion: nil)
-                        return nil
-                   })
-                })
+                self?.login(with: credentialsProvider, loginType: .UserPool)
             }
         }
     }

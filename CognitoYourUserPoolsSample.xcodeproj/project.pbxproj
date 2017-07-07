@@ -24,6 +24,22 @@
 		17FC2FA51E25A77600174015 /* UserDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC2FA41E25A77600174015 /* UserDetailTableViewController.swift */; };
 		17FC2FA71E25A9A200174015 /* DevicesDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FC2FA61E25A9A200174015 /* DevicesDetailTableViewController.swift */; };
 		FD5A08671EF9093B004DF706 /* FacebookProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5A08661EF9093B004DF706 /* FacebookProvider.swift */; };
+		FDA7EF231F0FCA0600D384EA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF131F0FCA0600D384EA /* Empty.swift */; };
+		FDA7EF241F0FCA0600D384EA /* TCCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF141F0FCA0600D384EA /* TCCategory.swift */; };
+		FDA7EF251F0FCA0600D384EA /* TCCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF151F0FCA0600D384EA /* TCCategoryList.swift */; };
+		FDA7EF261F0FCA0600D384EA /* TCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF161F0FCA0600D384EA /* TCError.swift */; };
+		FDA7EF271F0FCA0600D384EA /* TCFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF171F0FCA0600D384EA /* TCFiles.swift */; };
+		FDA7EF281F0FCA0600D384EA /* TCLearner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF181F0FCA0600D384EA /* TCLearner.swift */; };
+		FDA7EF291F0FCA0600D384EA /* TCNewFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF191F0FCA0600D384EA /* TCNewFile.swift */; };
+		FDA7EF2A1F0FCA0600D384EA /* TCNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF1A1F0FCA0600D384EA /* TCNewUser.swift */; };
+		FDA7EF2B1F0FCA0600D384EA /* TCSubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF1B1F0FCA0600D384EA /* TCSubCategory.swift */; };
+		FDA7EF2C1F0FCA0600D384EA /* TCTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF1C1F0FCA0600D384EA /* TCTag.swift */; };
+		FDA7EF2D1F0FCA0600D384EA /* TCTagList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF1D1F0FCA0600D384EA /* TCTagList.swift */; };
+		FDA7EF2E1F0FCA0600D384EA /* TCTectecClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF1E1F0FCA0600D384EA /* TCTectecClient.swift */; };
+		FDA7EF2F1F0FCA0600D384EA /* TCTutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF1F1F0FCA0600D384EA /* TCTutor.swift */; };
+		FDA7EF301F0FCA0600D384EA /* TCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF201F0FCA0600D384EA /* TCUser.swift */; };
+		FDA7EF311F0FCA0600D384EA /* TCUserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF211F0FCA0600D384EA /* TCUserDetail.swift */; };
+		FDA7EF321F0FCA0600D384EA /* TCUserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA7EF221F0FCA0600D384EA /* TCUserSetting.swift */; };
 		FDE235FE1F016D6800EBBD07 /* TwitterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE235FD1F016D6800EBBD07 /* TwitterProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +65,24 @@
 		AB8F26771F0FF8105FC402DD /* Pods_CognitoYourUserPoolsSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CognitoYourUserPoolsSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBEB9BB4F88788184F7DD583 /* Pods-CognitoYourUserPoolsSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CognitoYourUserPoolsSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CognitoYourUserPoolsSample/Pods-CognitoYourUserPoolsSample.debug.xcconfig"; sourceTree = "<group>"; };
 		FD5A08661EF9093B004DF706 /* FacebookProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookProvider.swift; sourceTree = "<group>"; };
+		FDA7EF111F0FCA0600D384EA /* AWSApiGatewayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSApiGatewayBridge.h; sourceTree = "<group>"; };
+		FDA7EF121F0FCA0600D384EA /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
+		FDA7EF131F0FCA0600D384EA /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		FDA7EF141F0FCA0600D384EA /* TCCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCategory.swift; sourceTree = "<group>"; };
+		FDA7EF151F0FCA0600D384EA /* TCCategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCategoryList.swift; sourceTree = "<group>"; };
+		FDA7EF161F0FCA0600D384EA /* TCError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCError.swift; sourceTree = "<group>"; };
+		FDA7EF171F0FCA0600D384EA /* TCFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCFiles.swift; sourceTree = "<group>"; };
+		FDA7EF181F0FCA0600D384EA /* TCLearner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCLearner.swift; sourceTree = "<group>"; };
+		FDA7EF191F0FCA0600D384EA /* TCNewFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCNewFile.swift; sourceTree = "<group>"; };
+		FDA7EF1A1F0FCA0600D384EA /* TCNewUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCNewUser.swift; sourceTree = "<group>"; };
+		FDA7EF1B1F0FCA0600D384EA /* TCSubCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSubCategory.swift; sourceTree = "<group>"; };
+		FDA7EF1C1F0FCA0600D384EA /* TCTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTag.swift; sourceTree = "<group>"; };
+		FDA7EF1D1F0FCA0600D384EA /* TCTagList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTagList.swift; sourceTree = "<group>"; };
+		FDA7EF1E1F0FCA0600D384EA /* TCTectecClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTectecClient.swift; sourceTree = "<group>"; };
+		FDA7EF1F1F0FCA0600D384EA /* TCTutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTutor.swift; sourceTree = "<group>"; };
+		FDA7EF201F0FCA0600D384EA /* TCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCUser.swift; sourceTree = "<group>"; };
+		FDA7EF211F0FCA0600D384EA /* TCUserDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCUserDetail.swift; sourceTree = "<group>"; };
+		FDA7EF221F0FCA0600D384EA /* TCUserSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCUserSetting.swift; sourceTree = "<group>"; };
 		FDE235FD1F016D6800EBBD07 /* TwitterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +101,7 @@
 		17FC2F731E258FC500174015 = {
 			isa = PBXGroup;
 			children = (
+				FDA7EF101F0FCA0600D384EA /* generated-src */,
 				17FC2F7E1E258FC500174015 /* CognitoYourUserPoolsSample */,
 				17FC2F7D1E258FC500174015 /* Products */,
 				DB539DB17300E4375A37CCA6 /* Pods */,
@@ -130,6 +165,32 @@
 				2D8C9B52DE415302BA7B152A /* Pods-CognitoYourUserPoolsSample.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FDA7EF101F0FCA0600D384EA /* generated-src */ = {
+			isa = PBXGroup;
+			children = (
+				FDA7EF111F0FCA0600D384EA /* AWSApiGatewayBridge.h */,
+				FDA7EF121F0FCA0600D384EA /* Bridging_Header.h */,
+				FDA7EF131F0FCA0600D384EA /* Empty.swift */,
+				FDA7EF141F0FCA0600D384EA /* TCCategory.swift */,
+				FDA7EF151F0FCA0600D384EA /* TCCategoryList.swift */,
+				FDA7EF161F0FCA0600D384EA /* TCError.swift */,
+				FDA7EF171F0FCA0600D384EA /* TCFiles.swift */,
+				FDA7EF181F0FCA0600D384EA /* TCLearner.swift */,
+				FDA7EF191F0FCA0600D384EA /* TCNewFile.swift */,
+				FDA7EF1A1F0FCA0600D384EA /* TCNewUser.swift */,
+				FDA7EF1B1F0FCA0600D384EA /* TCSubCategory.swift */,
+				FDA7EF1C1F0FCA0600D384EA /* TCTag.swift */,
+				FDA7EF1D1F0FCA0600D384EA /* TCTagList.swift */,
+				FDA7EF1E1F0FCA0600D384EA /* TCTectecClient.swift */,
+				FDA7EF1F1F0FCA0600D384EA /* TCTutor.swift */,
+				FDA7EF201F0FCA0600D384EA /* TCUser.swift */,
+				FDA7EF211F0FCA0600D384EA /* TCUserDetail.swift */,
+				FDA7EF221F0FCA0600D384EA /* TCUserSetting.swift */,
+			);
+			name = "generated-src";
+			path = "aws-apigateway-ios-swift/generated-src";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,16 +321,32 @@
 			files = (
 				17FC2FA31E25A5D000174015 /* ConfirmForgotPasswordViewController.swift in Sources */,
 				FD5A08671EF9093B004DF706 /* FacebookProvider.swift in Sources */,
+				FDA7EF251F0FCA0600D384EA /* TCCategoryList.swift in Sources */,
 				17FC2FA11E25A25900174015 /* ForgotPasswordViewController.swift in Sources */,
 				17FC2F9D1E259E5D00174015 /* SignUpViewController.swift in Sources */,
 				17FC2F9F1E259F3200174015 /* ConfirmSignUpViewController.swift in Sources */,
+				FDA7EF271F0FCA0600D384EA /* TCFiles.swift in Sources */,
 				17FC2F9B1E259E0500174015 /* Constants.swift in Sources */,
+				FDA7EF2D1F0FCA0600D384EA /* TCTagList.swift in Sources */,
+				FDA7EF2B1F0FCA0600D384EA /* TCSubCategory.swift in Sources */,
+				FDA7EF281F0FCA0600D384EA /* TCLearner.swift in Sources */,
+				FDA7EF241F0FCA0600D384EA /* TCCategory.swift in Sources */,
+				FDA7EF2A1F0FCA0600D384EA /* TCNewUser.swift in Sources */,
+				FDA7EF2E1F0FCA0600D384EA /* TCTectecClient.swift in Sources */,
+				FDA7EF321F0FCA0600D384EA /* TCUserSetting.swift in Sources */,
 				FDE235FE1F016D6800EBBD07 /* TwitterProvider.swift in Sources */,
+				FDA7EF261F0FCA0600D384EA /* TCError.swift in Sources */,
 				17FC2F991E25940900174015 /* SignInViewController.swift in Sources */,
 				17FC2F971E25928900174015 /* MFAViewController.swift in Sources */,
+				FDA7EF231F0FCA0600D384EA /* Empty.swift in Sources */,
+				FDA7EF301F0FCA0600D384EA /* TCUser.swift in Sources */,
+				FDA7EF2C1F0FCA0600D384EA /* TCTag.swift in Sources */,
 				17FC2FA71E25A9A200174015 /* DevicesDetailTableViewController.swift in Sources */,
+				FDA7EF291F0FCA0600D384EA /* TCNewFile.swift in Sources */,
 				17FC2F801E258FC500174015 /* AppDelegate.swift in Sources */,
+				FDA7EF2F1F0FCA0600D384EA /* TCTutor.swift in Sources */,
 				17FC2FA51E25A77600174015 /* UserDetailTableViewController.swift in Sources */,
+				FDA7EF311F0FCA0600D384EA /* TCUserDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +472,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.CognitoYourUserPoolsSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/aws-apigateway-ios-swift/generated-src/Bridging_Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -409,6 +487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.CognitoYourUserPoolsSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/aws-apigateway-ios-swift/generated-src/Bridging_Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

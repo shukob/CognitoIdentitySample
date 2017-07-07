@@ -1,4 +1,6 @@
 PODS:
+  - AWSAPIGateway (2.5.8):
+    - AWSCore (= 2.5.8)
   - AWSCognitoIdentityProvider (2.5.8):
     - AWSCore (= 2.5.8)
   - AWSCore (2.5.8)
@@ -23,8 +25,9 @@ PODS:
     - TwitterCore (>= 2.8)
 
 DEPENDENCIES:
-  - AWSCognitoIdentityProvider (~> 2.5.0)
-  - AWSCore (~> 2.5.0)
+  - AWSAPIGateway
+  - AWSCognitoIdentityProvider
+  - AWSCore
   - Crashlytics
   - Fabric
   - FBSDKCoreKit
@@ -34,6 +37,7 @@ DEPENDENCIES:
   - TwitterKit
 
 SPEC CHECKSUMS:
+  AWSAPIGateway: 8e652734914fdf10e3aa345127d261c7e36f8dec
   AWSCognitoIdentityProvider: 6c0c276a16b622914563350c64d723bcecaa9e75
   AWSCore: cf101c44d2cc5da32abc27d5529cddc63c010415
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -45,6 +49,6 @@ SPEC CHECKSUMS:
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 
-PODFILE CHECKSUM: 1ce70feb209b69d379bdfcb8caa2486816b94924
+PODFILE CHECKSUM: 6f9a163b5786401bd3e87e2da3320913af3049d0
 
 COCOAPODS: 1.2.1
